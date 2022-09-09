@@ -1,0 +1,41 @@
+{% load static %} <!-- usado para todo template que for carregar arquivos estaticos -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Django 1 - Index</title>
+    <link rel='stylesheet' href='{% static 'css/estilos.css' %}'>
+</head>
+<body>
+    <h1>Meu site</h1>
+
+    <h2>{{ curso }}</h2>
+
+    <h3>Meus produtos:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produto in produtos %}
+            <tr>
+                <td><a href='{% url 'produto' produto.id %}'>{{ produto.nome }}</a></td>
+                <td>{{ produto.preco }}</td>
+            </tr>
+        {% endfor  %}
+        </tbody>
+    </table>
+
+    <p>Fazer login: <a href='admin'>Logar</p>
+
+    <button onclick='teste();'>Clique-me</button>
+
+    <h2>Padrão MTV</h2>
+    <img src='{% static 'images/django.png' %}'/>
+
+    <script type='text/javascript' src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
